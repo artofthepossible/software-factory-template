@@ -1,26 +1,135 @@
 name: Bug report
-description: Report something that is not working
-labels: [bug]
+description: Report a reproducible problem in the project.
+labels: ["bug"]
 body:
-  - type: textarea
-    id: what-happened
+  - type: markdown
     attributes:
-      label: What happened?
-      description: What did you expect, and what happened instead?
+      value: |
+        Thanks for reporting this issue. Please include enough detail for a maintainer or agent to reproduce and verify the fix.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: One-sentence description of the bug.
+      placeholder: "Login fails for users without an email claim"
     validations:
       required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How significant is the impact?
+      options:
+        - Low
+        - Medium
+        - High
+        - Critical
+    validations:
+      required: true
+
   - type: textarea
-    id: repro
+    id: impact
+    attributes:
+      label: Impact
+      description: Who is affected, and what is the business or user impact?
+      placeholder: |
+        - Affected users: SSO users with missing email claim
+        - Impact: cannot sign in and cannot access dashboard
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected behavior
+      description: What should happen instead?
+      placeholder: "Users should be redirected to the dashboard after successful sign-in."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual_behavior
+    attributes:
+      label: Actual behavior
+      description: What is happening now?
+      placeholder: "The app returns a 500 and shows an error page."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
     attributes:
       label: Steps to reproduce
+      description: List precise steps. Include inputs, URLs, commands, and data values if relevant.
+      placeholder: |
+        1. Sign in with a user whose email claim is missing.
+        2. Navigate to /auth/callback.
+        3. Observe the failure.
     validations:
       required: true
-  - type: input
-    id: version
-    attributes:
-      label: Version / commit
+
   - type: textarea
-    id: logs
+    id: environment
     attributes:
-      label: Relevant logs
-      render: shell
+      label: Environment
+      description: Include OS, browser, app version, deployment environment, backend details, and relevant config.
+      placeholder: |
+        - OS:
+        - Browser:
+        - App version:
+        - Environment: dev/staging/prod
+        - Runtime:
+        - Related services:
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Include logs, screenshots, stack traces, or links to failing runs.
+      placeholder: |
+        - Error log snippet:
+        - Screenshot or video:
+        - Supporting CI/test link:
+    validations:
+      required: false
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints / non-goals
+      description: Any known limitations or requirements that must be respected.
+      placeholder: |
+        - Must not require a database migration
+        - Must retain compatibility with existing SSO providers
+        - Do not change user-facing behavior for valid sign-ins
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      description: Define what must be true before this is considered fixed.
+      placeholder: |
+        - A user with a missing email claim can sign in without a 500 error.
+        - The app redirects to the dashboard or a safe fallback.
+        - Existing valid login flows continue to work.
+        - Validation is covered by a regression test or smoke check.
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification steps
+      description: How should a maintainer or agent verify the fix?
+      placeholder: |
+        - Run: npm test -- --runInBand
+        - Sign in with the affected user type
+        - Confirm no 500 and expected redirect occurs
+    validations:
+      required: true

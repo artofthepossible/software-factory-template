@@ -1,0 +1,115 @@
+name: Engineering task
+description: Track a scoped implementation task for humans or AI agents.
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for implementation work that needs clear scope, constraints, and verification.
+
+  - type: input
+    id: task_title
+    attributes:
+      label: Task title
+      description: Short descriptive title for the work.
+      placeholder: "Add retry logic for failed billing sync requests"
+    validations:
+      required: true
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What outcome should be achieved?
+      placeholder: "Reduce failed billing sync jobs caused by transient 429 responses."
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Include relevant business/background context.
+      placeholder: |
+        - Billing sync job is currently failing during API bursts.
+        - This creates visibility gaps in daily reconciliation.
+    validations:
+      required: true
+
+  - type: textarea
+    id: in_scope
+    attributes:
+      label: In scope
+      description: What work is explicitly included?
+      placeholder: |
+        - Add exponential backoff for transient rate limit errors
+        - Log retry attempts with correlation ID
+    validations:
+      required: true
+
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of scope
+      description: What should not be included in this task?
+      placeholder: |
+        - Replacing the billing integration provider
+        - Building a new dashboard
+    validations:
+      required: false
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: Include required limitations, guardrails, and dependencies.
+      placeholder: |
+        - Must keep API call volume within provider limits
+        - No schema changes required
+        - Must preserve current job scheduling behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      description: State the completion criteria.
+      placeholder: |
+        - Retries occur for transient 429 and 5xx responses
+        - Maximum retry count is defined and documented
+        - Retry metadata is visible in logs
+        - Existing successful sync behavior remains unchanged
+    validations:
+      required: true
+
+  - type: textarea
+    id: agent_task_brief
+    attributes:
+      label: Agent task brief
+      description: This section is especially useful for AI-assisted execution.
+      placeholder: |
+        Objective:
+        Scope:
+        Constraints:
+        In scope:
+        Out of scope:
+        Success criteria:
+        Validation commands:
+        Related files:
+        References:
+        Risks / edge cases:
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification steps
+      description: How will we verify the task is done?
+      placeholder: |
+        - Run: npm test -- billing-sync
+        - Trigger simulated 429 response
+        - Confirm retry attempt and successful completion
+    validations:
+      required: true

@@ -1,21 +1,99 @@
 name: Feature request
-description: Suggest an improvement
-labels: [enhancement]
+description: Suggest a new capability or improvement to the project.
+labels: ["enhancement"]
 body:
-  - type: textarea
-    id: problem
+  - type: markdown
     attributes:
-      label: Problem
-      description: What problem are you trying to solve?
+      value: |
+        Describe the problem to solve and the expected business or user outcome. Avoid prescribing a specific implementation unless it is required.
+
+  - type: input
+    id: goal
+    attributes:
+      label: Goal
+      description: What user or business need does this satisfy?
+      placeholder: "Allow admins to export audit logs for the last 90 days"
     validations:
       required: true
+
   - type: textarea
-    id: proposal
+    id: problem_statement
     attributes:
-      label: Proposed solution
+      label: Problem statement
+      description: What problem exists today?
+      placeholder: "The audit log page only shows the last 10 records and cannot be exported for compliance review."
     validations:
       required: true
+
+  - type: textarea
+    id: user_story
+    attributes:
+      label: User story
+      description: Write the desired outcome from the user's perspective.
+      placeholder: "As an admin, I want to export audit logs so that I can review changes for compliance and troubleshooting."
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What is in scope and what should remain out of scope?
+      placeholder: |
+        In scope:
+        - CSV export for the last 90 days
+        - Pagination support for large exports
+
+        Out of scope:
+        - PDF export
+        - Custom report builder
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      description: Define objective completion criteria.
+      placeholder: |
+        - Admins can export audit logs as CSV
+        - Export includes timestamp, user, action, and metadata
+        - CSV is limited to the selected date range
+        - Existing audit log UI remains unchanged for other users
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints / requirements
+      description: Include technical or organizational constraints.
+      placeholder: |
+        - Must work for up to 10,000 records without timeouts
+        - No new paid dependencies
+        - Should be compatible with the existing API
+    validations:
+      required: false
+
   - type: textarea
     id: alternatives
     attributes:
       label: Alternatives considered
+      description: What other approaches were considered?
+      placeholder: |
+        - Manual CSV export from the database
+        - Building a custom report page in a separate service
+    validations:
+      required: false
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification plan
+      description: How will we know this feature works?
+      placeholder: |
+        - Run acceptance tests for export flow
+        - Validate CSV output structure
+        - Confirm admin role permissions are enforced
+    validations:
+      required: true

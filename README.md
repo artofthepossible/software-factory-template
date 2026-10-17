@@ -1,9 +1,9 @@
-# Project Name
+# Software Factory Template
 
-> One-line description of what this project does.
+> A reusable starter for building secure, production-ready software projects with consistent CI, governance, and developer workflow defaults.
 
-[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/OWNER/REPO/actions/workflows/codeql.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/codeql.yml)
+[![CI](https://github.com/artofthepossible/software-factory-template/actions/workflows/ci.yml/badge.svg)](https://github.com/artofthepossible/software-factory-template/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/artofthepossible/software-factory-template/actions/workflows/codeql.yml/badge.svg)](https://github.com/artofthepossible/software-factory-template/actions/workflows/codeql.yml)
 
 ## Using this template
 

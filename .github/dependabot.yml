@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]
+  # TODO: add the ecosystem(s) used by this repo, e.g.:
+  # - package-ecosystem: npm | pip | gomod | cargo | docker | maven
+  #   directory: /
+  #   schedule:
+  #     interval: weekly
